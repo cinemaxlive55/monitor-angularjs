@@ -1,0 +1,22 @@
+<div class="ibox float-e-margins">
+  <div *ngIf="color=='default'" class="ibox-content">
+    <a routerLink="{{link}}">
+      <p class="no-margins ">{{name}}</p>
+    </a>
+  </div>
+  <div *ngIf="color=='green'" class="ibox-content block-green">
+    <a routerLink="{{link}}">
+      <p class="no-margins block-font">{{name}}</p>
+    </a>
+  </div>
+  <div *ngIf="color=='gray'" class="ibox-content block-gray">
+    <a routerLink="{{link}}">
+      <p class="no-margins block-font">{{name}}</p>
+    </a>
+  </div>
+  <div *ngIf="color=='red'" class="ibox-content block-red">
+    <a routerLink="{{link}}">
+      <p class="no-margins block-font">{{name}}</p>
+    </a>
+  </div>
+</div>

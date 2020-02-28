@@ -1,0 +1,43 @@
+<div class="wrapper wrapper-content">
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="row">
+        <div class="col-lg-6">
+          <app-color-block [color]="functionalHealthObj.color" [name]="functionalHealthObj.name" [link]="functionalHealthObj.link"></app-color-block>
+        </div>
+        <div class="col-lg-3">
+          <app-color-block [color]="cassandraObj.color" [name]="cassandraObj.name" [link]="cassandraObj.link"></app-color-block>
+        </div>
+        <div class="col-lg-3">
+          <app-color-block [color]="infrastructureObj.color" [name]="infrastructureObj.name" [link]="infrastructureObj.link"></app-color-block>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-3">
+          <app-color-block [color]="tectonicObj.color" [name]="tectonicObj.name" [link]="tectonicObj.link"></app-color-block>
+        </div>
+        <div class="col-lg-3">
+          <app-color-block [color]="kafkaObj.color" [name]="kafkaObj.name" [link]="kafkaObj.link"></app-color-block>
+        </div>
+        <div class="col-lg-3">
+          <app-color-block [color]="fluentdObj.color" [name]="fluentdObj.name" [link]="fluentdObj.link"></app-color-block>
+        </div>
+        <div class="col-lg-3">
+          <app-color-block [color]="elasticObj.color" [name]="elasticObj.name" [link]="elasticObj.link"></app-color-block>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4">
+      <div class="row">
+        <div class="col-lg-6">
+          <app-color-block [color]="supportApplicationsObj.color" [name]="supportApplicationsObj.name" [link]="supportApplicationsObj.link"></app-color-block>
+        </div>
+        <div class="col-lg-6">
+          <app-color-block [color]="operationalStatusObj.color" [name]="operationalStatusObj.name" [link]="operationalStatusObj.link"></app-color-block>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

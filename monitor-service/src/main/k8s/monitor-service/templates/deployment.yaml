@@ -1,0 +1,57 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: {{template "helm-blue-green.deploymentname" . }}
+  version: {{ .Values.artifactVersion }}
+spec:
+  replicas: {{ .Values.container.replicas.min }}
+  selector:
+    matchLabels:
+      app: {{ .Values.artifactName }}
+  strategy:
+    rollingUpdate:
+      maxSurge: {{ .Values.container.replicas.min }}
+      maxUnavailable: {{ .Values.container.replicas.unavailable }}
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.artifactName }}
+        git_commit: {{ .Values.commit | quote }}
+        git_branch: {{ .Values.branch | quote }}
+        version: {{ .Values.artifactVersion | quote}}
+    spec:
+      containers:
+      - env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: "k8s"
+        image: nexus.{{ .Values.deployment.cluster }}.{{ .Values.domain }}:8555/{{ .Values.deployment.project }}/{{ .Values.artifactName }}:{{ .Values.commit }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        name: {{ .Values.artifactName }}
+        resources:
+          requests:
+            cpu: 200m
+            memory: 256Mi
+          limits:
+            cpu: 500m
+            memory: 512Mi
+        securityContext:
+          privileged: false
+          # defines the health checking
+        readinessProbe:
+          # an http probe
+          httpGet:
+            path: /health
+            port: {{ .Values.container.port }}
+            scheme: HTTP
+          # length of time to wait for a pod to initialize
+          # after pod startup, before applying health checking
+          initialDelaySeconds: {{ .Values.container.probe.readiness.initialDelay }}
+          periodSeconds: 5
+          failureThreshold: 6
+      imagePullSecrets:
+          - name: {{ .Values.deployment.project }}-nexus-pull-secret
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      securityContext: {}
+      terminationGracePeriodSeconds: 30

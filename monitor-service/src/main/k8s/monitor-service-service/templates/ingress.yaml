@@ -1,0 +1,16 @@
+{{- if .Values.ingress.enabled -}}
+kind: Ingress
+apiVersion: extensions/v1beta1
+metadata:
+  name: {{ .Values.artifactName }}
+  annotations:
+      kubernetes.io/ingress.class: ac2
+spec:
+  rules:
+    - host: {{ .Values.artifactName }}.{{ .Values.namespace }}.{{ .Values.deployment.cluster }}.{{ .Values.domain }}
+      http:
+        paths:
+          - backend:
+              serviceName: {{ .Values.artifactName }}
+              servicePort: {{ .Values.service.port }}
+{{- end }}

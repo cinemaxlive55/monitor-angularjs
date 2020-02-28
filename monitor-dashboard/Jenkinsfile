@@ -1,0 +1,112 @@
+@Library('nextgen-jenkins-libraries@3.3.0') _
+
+def  utils = new au.gov.nextgen.JenkinsUtils()
+def appName = 'monitor-dashboard'
+def appVersion = '0.0.1'
+def clusterNonProd
+def clusterDevops
+def dockerRepository
+def clusterProd
+def isPR
+
+properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '10')), pipelineTriggers([])])
+
+node'',{
+  stage "Preparation", {
+    cleanWs()
+    checkout scm
+    clusterNonProd = utils.getNonProdClusterName()
+    clusterDevops = utils.getDevopsClusterName()
+    clusterProd = utils.getProdClusterName()
+    dockerRepository = 'nextgen'
+    isPR = (!utils.isCI() && !utils.isCD())
+    sh "npm install --registry https://registry.npmjs.org"
+  }
+
+  stage('Unit Test') {
+      try {
+          timeout(time: 2, unit: 'HOURS') {
+              sh "npm run test-ci"
+          }
+      } catch(err) {
+         return;
+      }
+  }
+
+  stage('Code Analysis') {
+      def scannerHome = tool 'sonar-scanner';
+      sh "node_modules/.bin/tslint -p tsconfig.json -c tslint.json  \'src/**/*.ts\' --force --format json --out issues.json"
+      withSonarQubeEnv("SonarQube") {
+         sh "${scannerHome}/bin/sonar-scanner -Dproject.settings=sonar-scanner.properties"
+      }
+  }
+
+  stage "SonarQube Quality Gate", {
+//      sonarQubeQualityGate 1, 'HOURS'
+  }
+
+  stage "Build Docker Image", {
+    sh "docker build -t ${appName}:${appVersion} ."
+  }
+
+  stage "Helm Dry Run", {
+    helmUpgrade clusterNonProd, {
+      dryRun = true
+      namespace = 'ci'
+      artifactName = appName
+      includeIngress = true
+      blueGreenEnabled = true
+    }
+  }
+
+  stage "Push" ,{
+    dockerPushNexus clusterDevops, {
+      imageName = appName
+      imageVersion = appVersion
+      dockerRepo = dockerRepository
+    }
+  }
+
+      if (isPR) {
+          stage "Deploy CI", {
+              previousVersion = helmUpgrade clusterNonProd, {
+                  namespace = 'ci'
+                  artifactName = appName
+                  artifactVersion = appVersion
+                  includeIngress = true
+                  blueGreenEnabled = false
+              }
+          }
+      } else {
+          stage "Deploy QA", {
+              previousVersion = helmUpgrade clusterNonProd, {
+                  namespace = 'qa'
+                  artifactName = appName
+                  artifactVersion = appVersion
+                  includeIngress = true
+                  blueGreenEnabled = true
+                  helmSetArguments = 'container.replicas.min=1,container.replicas.max=1'
+              }
+          }
+      }
+}
+
+node'', {
+    if(!isPR){
+        stage "Integration Tests", {
+        }
+    }
+
+    if (utils.isCD()) {
+        stage "Deploy PROD", {
+            previousVersion = helmUpgrade clusterProd, {
+                namespace = 'prod'
+                artifactName = appName
+                artifactVersion = appVersion
+                includeIngress = true
+                blueGreenEnabled = true
+                helmSetArguments = 'container.replicas.min=1,container.replicas.max=1'
+            }
+        }
+    }
+}

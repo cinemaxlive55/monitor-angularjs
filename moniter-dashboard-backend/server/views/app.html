@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>koa-passport example</title>
+</head>
+<body>
+  <h1>App</h1>
+  <p>You are authenticated ... <a href="/logout">logout</a></p>
+  <p>Get user id 1  without jwt token .......... <a href="/user/1">without jwt token</a></p>
+  <p>jwt logined user list ... <button type="button" id="jwtusers">get user info from jwt token</button></p>
+</body>
+<script>
+    document.getElementById('jwtusers').addEventListener('click', () => {
+        const token = sessionStorage.getItem('token')
+        console.log(token)
+    fetch('/users',{
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + token,
+        }
+    })
+        .then(res => res.json())
+    .then(data => {
+        alert("current user is "+JSON.stringify(data));
+    })
+    .catch(err => console.log(err))
+    })
+</script>
+</html>

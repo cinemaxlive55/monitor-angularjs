@@ -1,0 +1,288 @@
+
+<!-- Page wrapper -->
+<div ng-include="'views/common/topnavbar.html'"></div>
+ 
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>Current number of nodes</h5>
+          <div class="pull-right">
+            <div class="btn-group">
+              <button type="button" class="btn btn-xs btn-white active">Today</button>
+              <button type="button" class="btn btn-xs btn-white">Monthly</button>
+              <button type="button" class="btn btn-xs btn-white">Annual</button>
+            </div>
+          </div>
+        </div>
+        <div class="ibox-content">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="flot-chart">
+                <div flotChart class="flot-chart-content" [options]="flotOptionsCurrentNumberOfNodes" [dataset]="flotDatasetCurrentNumberOfNodes"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>Number of initialising shards</h5>
+          <div class="pull-right">
+            <div class="btn-group">
+              <button type="button" class="btn btn-xs btn-white active">Today</button>
+              <button type="button" class="btn btn-xs btn-white">Monthly</button>
+              <button type="button" class="btn btn-xs btn-white">Annual</button>
+            </div>
+          </div>
+        </div>
+        <div class="ibox-content">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="flot-chart">
+                <div flotChart class="flot-chart-content" [options]="flotOptionsNumOfInitialisingShards" [dataset]="flotDatasetNumOfInitialisingShards"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>Number of unassigned shards</h5>
+          <div class="pull-right">
+            <div class="btn-group">
+              <button type="button" class="btn btn-xs btn-white active">Today</button>
+              <button type="button" class="btn btn-xs btn-white">Monthly</button>
+              <button type="button" class="btn btn-xs btn-white">Annual</button>
+            </div>
+          </div>
+        </div>
+        <div class="ibox-content">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="flot-chart">
+                <div flotChart class="flot-chart-content" [options]="flotOptionsNumOfUnassignedShards" [dataset]="flotDatasetNumOfUnassignedShards"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>Query load</h5>
+          <div class="pull-right">
+            <div class="btn-group">
+              <button type="button" class="btn btn-xs btn-white active">Today</button>
+              <button type="button" class="btn btn-xs btn-white">Monthly</button>
+              <button type="button" class="btn btn-xs btn-white">Annual</button>
+            </div>
+          </div>
+        </div>
+        <div class="ibox-content">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="flot-chart">
+                <div flotChart class="flot-chart-content" [options]="flotOptionsQuaryLoad" [dataset]="flotDatasetQuaryLoad"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>Query latency</h5>
+          <div class="pull-right">
+            <div class="btn-group">
+              <button type="button" class="btn btn-xs btn-white active">Today</button>
+              <button type="button" class="btn btn-xs btn-white">Monthly</button>
+              <button type="button" class="btn btn-xs btn-white">Annual</button>
+            </div>
+          </div>
+        </div>
+        <div class="ibox-content">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="flot-chart">
+                <div flotChart class="flot-chart-content" [options]="flotOptionsQuaryLatency" [dataset]="flotDatasetQuaryLatency"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>Number of queries</h5>
+          <div class="pull-right">
+            <div class="btn-group">
+              <button type="button" class="btn btn-xs btn-white active">Today</button>
+              <button type="button" class="btn btn-xs btn-white">Monthly</button>
+              <button type="button" class="btn btn-xs btn-white">Annual</button>
+            </div>
+          </div>
+        </div>
+        <div class="ibox-content">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="flot-chart">
+                <div flotChart class="flot-chart-content" [options]="flotOptionsNumberOfQueries" [dataset]="flotDatasetNumberOfQueries"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>Indexing latency</h5>
+          <div class="pull-right">
+            <div class="btn-group">
+              <button type="button" class="btn btn-xs btn-white active">Today</button>
+              <button type="button" class="btn btn-xs btn-white">Monthly</button>
+              <button type="button" class="btn btn-xs btn-white">Annual</button>
+            </div>
+          </div>
+        </div>
+        <div class="ibox-content">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="flot-chart">
+                <div flotChart class="flot-chart-content" [options]="flotOptionsIndexingLatency" [dataset]="flotDatasetIndexingLatency"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>Thread pool queues and rejections</h5>
+          <div class="pull-right">
+            <div class="btn-group">
+              <button type="button" class="btn btn-xs btn-white active">Today</button>
+              <button type="button" class="btn btn-xs btn-white">Monthly</button>
+              <button type="button" class="btn btn-xs btn-white">Annual</button>
+            </div>
+          </div>
+        </div>
+        <div class="ibox-content">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="flot-chart">
+                <div flotChart class="flot-chart-content" [options]="flotOptionsThreadPoolQueuesAndRejections" [dataset]="flotDatasetThreadPoolQueuesAndRejections"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>Bulk rejections and bulk queues</h5>
+          <div class="pull-right">
+            <div class="btn-group">
+              <button type="button" class="btn btn-xs btn-white active">Today</button>
+              <button type="button" class="btn btn-xs btn-white">Monthly</button>
+              <button type="button" class="btn btn-xs btn-white">Annual</button>
+            </div>
+          </div>
+        </div>
+        <div class="ibox-content">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="flot-chart">
+                <div flotChart class="flot-chart-content" [options]="flotOptionsBulkRejectionsAnddBulkQueues" [dataset]="flotDatasetBulkRejectionsAnddBulkQueues"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>Cache usage metrics</h5>
+          <div class="pull-right">
+            <div class="btn-group">
+              <button type="button" class="btn btn-xs btn-white active">Today</button>
+              <button type="button" class="btn btn-xs btn-white">Monthly</button>
+              <button type="button" class="btn btn-xs btn-white">Annual</button>
+            </div>
+          </div>
+        </div>
+        <div class="ibox-content">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="flot-chart">
+                <div flotChart class="flot-chart-content" [options]="flotOptionsCacheUsageMetrics" [dataset]="flotDatasetCacheUsageMetrics"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>Pending tasks</h5>
+          <div class="pull-right">
+            <div class="btn-group">
+              <button type="button" class="btn btn-xs btn-white active">Today</button>
+              <button type="button" class="btn btn-xs btn-white">Monthly</button>
+              <button type="button" class="btn btn-xs btn-white">Annual</button>
+            </div>
+          </div>
+        </div>
+        <div class="ibox-content">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="flot-chart">
+                <div flotChart class="flot-chart-content" [options]="flotOptionsPendingTasks" [dataset]="flotDatasetPendingTasks"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button type="button" class="btn btn-outline btn-primary" (click)="goBack()">go back</button>
+</div>
+
+
+<!-- Footer -->
+<div ng-include="'views/common/footer.html'"></div>
+

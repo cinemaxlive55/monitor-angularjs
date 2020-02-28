@@ -1,0 +1,160 @@
+<!-- Page wrapper -->
+<div ng-include="'views/common/topnavbar.html'"></div>
+
+<div class="wrapper wrapper-content">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>Offline partitions</h5>
+          <div class="pull-right">
+            <div class="btn-group">
+              <button type="button" class="btn btn-xs btn-white active">Today</button>
+              <button type="button" class="btn btn-xs btn-white">Monthly</button>
+              <button type="button" class="btn btn-xs btn-white">Annual</button>
+            </div>
+          </div>
+        </div>
+        <div class="ibox-content">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="flot-chart">
+                <div flotChart class="flot-chart-content" [options]="flotOptionsOfflinePartitions" [dataset]="flotDatasetOfflinePartitions"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>Message per second</h5>
+          <div class="pull-right">
+            <div class="btn-group">
+              <button type="button" class="btn btn-xs btn-white active">Today</button>
+              <button type="button" class="btn btn-xs btn-white">Monthly</button>
+              <button type="button" class="btn btn-xs btn-white">Annual</button>
+            </div>
+          </div>
+        </div>
+        <div class="ibox-content">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="flot-chart">
+                <div flotChart class="flot-chart-content" [options]="flotOptionsMessagePerSecond" [dataset]="flotDatasetMessagePerSecond"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>Requests per Second</h5>
+          <div class="pull-right">
+            <div class="btn-group">
+              <button type="button" class="btn btn-xs btn-white active">Today</button>
+              <button type="button" class="btn btn-xs btn-white">Monthly</button>
+              <button type="button" class="btn btn-xs btn-white">Annual</button>
+            </div>
+          </div>
+        </div>
+        <div class="ibox-content">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="flot-chart">
+                <div flotChart class="flot-chart-content" [options]="flotOptionsRequestsPerSecond" [dataset]="flotDatasetRequestsPerSecond"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>Commits per second</h5>
+          <div class="pull-right">
+            <div class="btn-group">
+              <button type="button" class="btn btn-xs btn-white active">Today</button>
+              <button type="button" class="btn btn-xs btn-white">Monthly</button>
+              <button type="button" class="btn btn-xs btn-white">Annual</button>
+            </div>
+          </div>
+        </div>
+        <div class="ibox-content">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="flot-chart">
+                <div flotChart class="flot-chart-content" [options]="flotOptionsCommitsPerSecond" [dataset]="flotDatasetCommitsPerSecond"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>Under replicated partitions</h5>
+          <div class="pull-right">
+            <div class="btn-group">
+              <button type="button" class="btn btn-xs btn-white active">Today</button>
+              <button type="button" class="btn btn-xs btn-white">Monthly</button>
+              <button type="button" class="btn btn-xs btn-white">Annual</button>
+            </div>
+          </div>
+        </div>
+        <div class="ibox-content">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="flot-chart">
+                <div flotChart class="flot-chart-content" [options]="flotOptionsUnderReplicatedPartitions" [dataset]="flotDatasetUnderReplicatedPartitions"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>Max lag</h5>
+          <div class="pull-right">
+            <div class="btn-group">
+              <button type="button" class="btn btn-xs btn-white active">Today</button>
+              <button type="button" class="btn btn-xs btn-white">Monthly</button>
+              <button type="button" class="btn btn-xs btn-white">Annual</button>
+            </div>
+          </div>
+        </div>
+        <div class="ibox-content">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="flot-chart">
+                <div flotChart class="flot-chart-content" [options]="flotOptionsMaxLag" [dataset]="flotDatasetMaxLag"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button type="button" class="btn btn-outline btn-primary" (click)="goBack()">go back</button>
+</div>
+
+
+<!-- Footer -->
+<div ng-include="'views/common/footer.html'"></div>

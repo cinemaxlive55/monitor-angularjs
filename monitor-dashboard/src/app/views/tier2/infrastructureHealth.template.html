@@ -1,0 +1,217 @@
+<div class="wrapper wrapper-content">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>CPU</h5>
+        </div>
+        <div class="ibox-content">
+          <div class="flot-chart">
+            <div flotChart class="flot-chart-content" [options]="barOptions" [dataset]="barDataset"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>Memory</h5>
+        </div>
+        <div class="ibox-content">
+          <div class="flot-chart">
+            <div flotChart class="flot-chart-content" [options]="barOptions" [dataset]="barDataset"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>Swap</h5>
+        </div>
+        <div class="ibox-content">
+          <div class="flot-chart">
+            <div flotChart class="flot-chart-content" [options]="barOptions" [dataset]="barDataset"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>Heap</h5>
+        </div>
+        <div class="ibox-content">
+          <div class="flot-chart">
+            <div flotChart class="flot-chart-content" [options]="barOptions" [dataset]="barDataset"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>Disk IO</h5>
+        </div>
+        <div class="ibox-content">
+          <div class="flot-chart">
+            <div flotChart class="flot-chart-content" [options]="barOptions" [dataset]="barDataset"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>Disk Utilisation</h5>
+        </div>
+        <div class="ibox-content">
+          <div class="flot-chart">
+            <div flotChart class="flot-chart-content" [options]="barOptions" [dataset]="barDataset"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>Network activity</h5>
+        </div>
+        <div class="ibox-content">
+          <div class="flot-chart">
+            <div flotChart class="flot-chart-content" [options]="barOptions" [dataset]="barDataset"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>Average Latency</h5>
+        </div>
+        <div class="ibox-content">
+          <div class="flot-chart">
+            <div flotChart class="flot-chart-content" [options]="barOptions" [dataset]="barDataset"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>Network activity</h5>
+        </div>
+        <div class="ibox-content">
+          <div class="flot-chart">
+            <div flotChart class="flot-chart-content" [options]="barOptions" [dataset]="barDataset"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>Average Latency</h5>
+        </div>
+        <div class="ibox-content">
+          <div class="flot-chart">
+            <div flotChart class="flot-chart-content" [options]="barOptions" [dataset]="barDataset"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="ibox">
+        <div class="ibox-content">
+          <h4>Percentage of HTTP errors</h4>
+          <div class="text-center">
+            <span sparkline [datasets]="httpErrorsSparklineData"
+                  [options]="httpErrorsSparklineOptions"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>Throughput</h5>
+        </div>
+        <div class="ibox-content">
+          <div class="flot-chart">
+            <div flotChart class="flot-chart-content" [options]="barOptions" [dataset]="barDataset"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="ibox">
+        <div class="ibox-content">
+          <h4>Unhealthy and Healthy Hosts</h4>
+          <div class="text-center">
+            <span sparkline [datasets]="hostsSparklineData"
+                  [options]="hostsSparklineOptions"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>In Service Instances</h5>
+        </div>
+        <div class="ibox-content">
+          <div class="flot-chart">
+            <div flotChart class="flot-chart-content" [options]="barOptions" [dataset]="barDataset"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>Maximum Groups</h5>
+        </div>
+        <div class="ibox-content">
+          <h1 class="no-margins">22</h1>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>Pending Instances</h5>
+        </div>
+        <div class="ibox-content">
+          <h1 class="no-margins">3</h1>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>Terminating Instances</h5>
+        </div>
+        <div class="ibox-content">
+          <div class="flot-chart">
+            <div flotChart class="flot-chart-content" [options]="barOptions" [dataset]="barDataset"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button type="button" class="btn btn-outline btn-primary" (click)="goBack()">go back</button>
+</div>

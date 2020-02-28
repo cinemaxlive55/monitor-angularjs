@@ -1,0 +1,49 @@
+@Library('nextgen-jenkins-libraries@3.0.0') _
+
+def  utils = new au.gov.nextgen.JenkinsUtils()
+def appName = 'moniter-dashboard-backend'
+def appVersion = '0.0.1'
+def clusterNonProd
+def dockerRepository
+
+properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '10')), pipelineTriggers([])])
+
+node'',{
+  stage "Preparation", {
+    checkout scm
+    clusterNonProd = utils.getNonProdClusterName()
+    dockerRepository = 'nextgen'
+  }
+
+  stage "Build Docker Image", {
+    sh "docker build -t ${appName}:${appVersion} ."
+  }
+
+  stage "Helm Dry Run", {
+    helmUpgrade clusterNonProd, {
+      dryRun = true
+      namespace = 'ci'
+      artifactName = appName
+      includeIngress = true
+      blueGreenEnabled = true
+    }
+  }
+
+  stage "Push" ,{
+    dockerPushImage clusterNonProd, {
+      imageName = appName
+      imageVersion = appVersion
+      dockerRepo = dockerRepository
+    }
+  }
+
+  stage "CI Deployment", {
+    previousVersion = helmUpgrade clusterNonProd, {
+      namespace = 'ci'
+      artifactName = appName
+      artifactVersion = appVersion
+      includeIngress = true
+      blueGreenEnabled = false
+    }
+  }
+}

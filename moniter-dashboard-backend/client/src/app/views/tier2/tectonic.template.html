@@ -1,0 +1,154 @@
+<!-- Page wrapper -->
+<div ng-include="'views/common/topnavbar.html'"></div>
+
+
+<div class="wrapper wrapper-content animated fadeIn">
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="ibox float-e-margins">
+          <div class="ibox-title">
+            <span class="label label-success pull-right">Monthly</span>
+            <h5>API servers</h5>
+          </div>
+          <div class="ibox-content">
+            <h1 class="no-margins">30</h1>
+            <div class="stat-percent font-bold text-success">98% <i class="fa fa-bolt"></i></div>
+            <small>Total API servers</small>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="ibox float-e-margins">
+          <div class="ibox-title">
+            <span class="label label-info pull-right">Annual</span>
+            <h5>Controller Managers</h5>
+          </div>
+          <div class="ibox-content">
+            <h1 class="no-margins">3</h1>
+            <div class="stat-percent font-bold text-info">20% <i class="fa fa-level-up"></i></div>
+            <small>Total Controller Managers</small>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="ibox float-e-margins">
+          <div class="ibox-title">
+            <span class="label label-primary pull-right">Today</span>
+            <h5>Scheduler</h5>
+          </div>
+          <div class="ibox-content">
+            <h1 class="no-margins">2</h1>
+            <div class="stat-percent font-bold text-navy">44% <i class="fa fa-level-up"></i></div>
+            <small>New scheduler</small>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="ibox float-e-margins">
+          <div class="ibox-title">
+            <span class="label label-danger pull-right">Low value</span>
+            <h5>Number of crash looping pods</h5>
+          </div>
+          <div class="ibox-content">
+            <h1 class="no-margins">0</h1>
+            <div class="stat-percent font-bold text-danger">100% <i class="fa fa-level-down"></i></div>
+            <small>Pods are working fine</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <div class="row">
+    <div class="col-lg-3">
+      <div class="ibox">
+        <div class="ibox-content">
+          <h5 class="m-b-md">Cluster status</h5>
+          <h2 class="text-navy">
+            <i class="fa fa-play fa-rotate-270"></i> Up
+          </h2>
+          <small>Last down 42 days ago</small>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="ibox">
+        <div class="ibox-content">
+          <h5 class="m-b-md">Tectonic console status</h5>
+          <h2 class="text-navy">
+            <i class="fa fa-play fa-rotate-270"></i> Up
+          </h2>
+          <small>Last down 42 days ago</small>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="ibox">
+        <div class="ibox-content">
+          <h5 class="m-b-md">Kubernetes API status</h5>
+          <h2 class="text-navy">
+            <i class="fa fa-play fa-rotate-270"></i> Up
+          </h2>
+          <small>Last down 42 days ago</small>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="ibox">
+        <div class="ibox-content">
+          <h5 class="m-b-md">Nodes status within tectonic</h5>
+          <h2 class="text-navy">
+            <i class="fa fa-play fa-rotate-270"></i> Up
+          </h2>
+          <small>Last down 42 days ago</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="ibox">
+        <div class="ibox-content">
+          <h5>How many pods are up, and how many are expected</h5>
+          <h2>10/30</h2>
+          <div class="progress progress-mini">
+            <div style="width: 33%;" class="progress-bar"></div>
+          </div>
+          <div class="m-t-sm small">Server is having problems</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>Number of alerts</h5>
+          <div class="pull-right">
+            <div class="btn-group">
+              <button type="button" class="btn btn-xs btn-white active">Today</button>
+              <button type="button" class="btn btn-xs btn-white">Monthly</button>
+              <button type="button" class="btn btn-xs btn-white">Annual</button>
+            </div>
+          </div>
+        </div>
+        <div class="ibox-content">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="flot-chart">
+                <div flotChart class="flot-chart-content" [options]="flotOptions" [dataset]="flotDataset"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button type="button" class="btn btn-outline btn-primary" (click)="goBack()">go back</button>
+</div>
+
+
+<!-- Footer -->
+<div ng-include="'views/common/footer.html'"></div>
+

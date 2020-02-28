@@ -1,0 +1,151 @@
+<!-- Page wrapper -->
+<div ng-include="'views/common/topnavbar.html'"></div>
+
+
+<div class="wrapper wrapper-content animated fadeIn">
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="ibox float-e-margins">
+          <div class="ibox-title">
+            <span class="label label-success pull-right">Now</span>
+            <h5>API servers</h5>
+          </div>
+          <div class="ibox-content">
+            <h1 class="no-margins">{{apiServersObj.num}}</h1>
+            <div class="stat-percent font-bold text-success">{{apiServersObj.num}}% <i class="fa fa-bolt"></i></div>
+            <small>Total API servers</small>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="ibox float-e-margins">
+          <div class="ibox-title">
+            <span class="label label-info pull-right">Now</span>
+            <h5>Controller Managers</h5>
+          </div>
+          <div class="ibox-content">
+            <h1 class="no-margins">{{controllerManagersObj.num}}</h1>
+            <div class="stat-percent font-bold text-info">{{controllerManagersObj.num | number : 1}}% <i class="fa fa-level-up"></i></div>
+            <small>Total Controller Managers</small>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="ibox float-e-margins">
+          <div class="ibox-title">
+            <span class="label label-primary pull-right">Now</span>
+            <h5>Scheduler Number</h5>
+          </div>
+          <div class="ibox-content">
+            <h1 class="no-margins">{{schedulerNumberObj.num}}%</h1>
+            <div class="stat-percent font-bold text-navy">{{schedulerNumberObj.num  | number : 1}}% <i class="fa fa-level-up"></i></div>
+            <small>Scheduler Avaliable</small>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="ibox float-e-margins">
+          <div class="ibox-title">
+            <h5>Number of crash looping pods</h5>
+          </div>
+          <div class="ibox-content">
+            <h1 class="no-margins">{{crushloopingPodsObj.num}}</h1>
+            <small>Pods are working fine</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <div class="row">
+    <div class="col-lg-3">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <span class="label label-success pull-right">Now</span>
+          <h5>Cluster Status</h5>
+        </div>
+        <div class="ibox-content">
+          <h1 class="text-navy">
+            <i class="fa fa-play fa-rotate-270"></i> {{clusterStatusObj.up}}
+          </h1>
+          <small></small>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <span class="label label-success pull-right">Now</span>
+          <h5>Tectonic console status</h5>
+        </div>
+        <div class="ibox-content">
+          <h1 class="text-navy">
+            <i class="fa fa-play fa-rotate-270"></i> Up
+          </h1>
+          <small>Last down 42 days ago</small>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <span class="label label-success pull-right">Now</span>
+          <h5>Kubernetes API status</h5>
+        </div>
+        <div class="ibox-content">
+          <h1 class="text-navy">
+            <i class="fa fa-play fa-rotate-270"></i> Up
+          </h1>
+          <small>Last down 42 days ago</small>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <span class="label label-primary pull-right">Now</span>
+          <h5>Nodes status within tectonic</h5>
+        </div>
+        <div class="ibox-content">
+          <h1 class="no-margins">{{nodeNotReadyObj.num}}</h1>
+          <small>Node Not Ready</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-3">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <span class="label label-success pull-right">Now</span>
+          <h5>Pods used</h5>
+        </div>
+        <div class="ibox-content">
+          <h1 class="no-margins">{{podsPercentageObj.num}}</h1>
+          <div class="stat-percent font-bold text-success">{{podsPercentageObj.num}}% <i class="fa fa-bolt"></i></div>
+          <small>Pods used</small>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <span class="label label-primary pull-right">Now</span>
+          <h5>Alerts Number</h5>
+        </div>
+        <div class="ibox-content">
+          <h1 class="no-margins">{{alertNumObj.num}}</h1>
+          <small>Alerts Number</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <button type="button" class="btn btn-outline btn-primary" (click)="goBack()">go back</button>
+</div>
+
+
+<!-- Footer -->
+<div ng-include="'views/common/footer.html'"></div>
+

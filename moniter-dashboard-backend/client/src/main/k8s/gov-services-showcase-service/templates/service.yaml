@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: {{ .Values.artifactName }}
+  name: {{ .Values.artifactName }}
+spec:
+  ports:
+  - name: http-{{ .Values.artifactName }}
+    port: {{ .Values.service.port }}
+    protocol: TCP
+    targetPort: {{ .Values.container.port }}
+  selector:
+    app: {{ .Values.artifactName }}
+    git_commit: {{ .Values.commit | quote }}
